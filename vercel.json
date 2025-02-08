@@ -1,5 +1,6 @@
 {
   "buildCommand": "prisma generate && next build",
+  "outputDirectory": ".next",
   "env": {
     "NEXT_PUBLIC_WS_URL": "wss://brittbot-websocket.up.railway.app"
   }
