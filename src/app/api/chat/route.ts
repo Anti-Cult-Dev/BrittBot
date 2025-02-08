@@ -1,31 +1,16 @@
 import { OpenAI } from 'openai'
-import { OpenAIStream, StreamingTextResponse } from 'ai'
 
-// Create an OpenAI API client configured for Kluster
 const kluster = new OpenAI({
   apiKey: process.env.KLUSTER_API_KEY,
   baseURL: 'https://api.kluster.ai/v1'
 })
 
-// IMPORTANT! Set the runtime to edge
-export const runtime = 'edge'
-
 export async function POST(req: Request) {
   try {
-    // Extract the messages from the body of the request
     const { messages } = await req.json()
 
-    if (!messages || !Array.isArray(messages)) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid messages format' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      )
-    }
-
-    // Create completion with Kluster
-    const response = await kluster.chat.completions.create({
-      model: 'klusterai/Meta-Llama-3.3-70B-Instruct-Turbo',
-      stream: true,
+    const completion = await kluster.chat.completions.create({
+      model: 'klusterai/Meta-Llama-3.1-8B-Instruct-Turbo',
       messages: [
         {
           role: 'system',
@@ -66,33 +51,9 @@ export async function POST(req: Request) {
       ]
     })
 
-    // Convert the response into a friendly stream
-    const stream = OpenAIStream(response)
-
-    // Return a StreamingTextResponse, which can be consumed by the client
-    return new StreamingTextResponse(stream)
+    return Response.json({ message: completion.choices[0].message.content })
   } catch (error) {
-    console.error('Error in chat route:', error)
-    
-    // Check if it's a Kluster API error
-    if (error.response?.status === 401) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid API key' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      )
-    }
-
-    return new Response(
-      JSON.stringify({
-        error: 'There was an error processing your request',
-        details: error instanceof Error ? error.message : String(error)
-      }),
-      {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    )
+    console.error('Error:', error)
+    return Response.json({ error: 'Failed to process request' }, { status: 500 })
   }
 }

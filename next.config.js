@@ -17,7 +17,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    appDir: true
+    // Removed 'appDir' as it is not recognized by Next.js
   },
   async rewrites() {
     return [
