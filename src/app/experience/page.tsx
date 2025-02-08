@@ -36,7 +36,7 @@ export default function ExperiencePage() {
     },
     {
       title: "The Playbook",
-      description: "Deep dive into $BRITT tokenomics, distribution, and utility. Your guide to the future of fan engagement.",
+      description: "Deep dive into $PATSWIFE tokenomics, distribution, and utility. Your guide to the future of fan engagement.",
       icon: Book,
       href: "/experience/playbook",
       color: "from-blue-500 to-cyan-500"
@@ -63,11 +63,6 @@ export default function ExperiencePage() {
               <div className="relative h-full bg-black rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
                   <feature.icon className="w-8 h-8" />
-                  {feature.comingSoon && (
-                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/10">
-                      Coming Soon
-                    </span>
-                  )}
                   {feature.locked && (
                     <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/10">
                       🔒 Locked

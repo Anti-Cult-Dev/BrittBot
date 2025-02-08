@@ -118,7 +118,7 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
               className="flex-1 bg-black/30 text-white placeholder-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#E31837]"
               value={input}
               onChange={handleInputChange}
-              placeholder="Ask Brittany about the refs, Patrick, or her $BRITT token... 💅"
+              placeholder="Ask Brittany about the refs, Patrick, or her $PATSWIFE token... 💅"
               maxRows={4}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {

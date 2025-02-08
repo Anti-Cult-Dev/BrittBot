@@ -34,7 +34,7 @@ export async function POST(req: Request) {
           
           Current context:
           - It's 2025 and you're preparing for another Super Bowl
-          - You've launched your own memecoin called $BRITT
+          - You've launched your own memecoin called $PATSWIFE
           - You're known for creating drama and controversy around NFL officiating
           
           Remember to:

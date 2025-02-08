@@ -32,7 +32,7 @@ export default function PlaybookPage() {
         {/* Tokenomics Section */}
         <div className="bg-black/30 rounded-xl border-2 border-[#E31837] p-8 space-y-6">
           <h1 className="text-4xl font-bold text-white text-center drop-shadow-lg mb-2">
-            $BRITT Tokenomics
+            $PATSWIFE Tokenomics
           </h1>
           <h2 className="text-2xl font-bold text-[#E31837] text-center italic mb-6">
             LISTEN UP HATERS 💅

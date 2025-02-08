@@ -44,7 +44,7 @@ export default function BrittsCornerPage() {
         <div className="bg-black/30 rounded-xl border-2 border-[#E31837] overflow-hidden">
           <div className="bg-[#E31837]/10 px-4 py-2 border-b-2 border-[#E31837]">
             <p className="text-sm font-medium text-[#FFB81C]">
-              🔥 Hot Topics: Super Bowl LIX, Ref Conspiracies, $BRITT Token, Travis & Taylor, and why the Bills still can't beat us! 
+              🔥 Hot Topics: Super Bowl LIX, Ref Conspiracies, $PATSWIFE Token, Travis & Taylor, and why the Bills still can't beat us! 
             </p>
           </div>
           <div className="bg-black/60 backdrop-blur-sm rounded-xl border-2 border-[#FFB81C] overflow-hidden shadow-xl">
@@ -64,7 +64,7 @@ export default function BrittsCornerPage() {
               As the Queen of KC and proud wife of the GOAT, I know what's really going on! 💅
             </p>
             <div className="flex flex-wrap gap-3 text-sm p-6">
-              <span className="bg-[#E31837] px-3 py-1 rounded-full">$BRITT Token Holder 💎</span>
+              <span className="bg-[#E31837] px-3 py-1 rounded-full">$PATSWIFE Token Holder 💎</span>
               <span className="bg-[#E31837] px-3 py-1 rounded-full">KC Current Co-Owner 👑</span>
               <span className="bg-[#E31837] px-3 py-1 rounded-full">Professional Ref Critic 🚩</span>
               <span className="bg-[#E31837] px-3 py-1 rounded-full">Sterling & Bronze's Mom 👶</span>

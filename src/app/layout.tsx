@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Britt's World",
     description: "Where every call is actually wrong and your opinion doesn't matter",
-    creator: "@buybrittcoin",
+    creator: "@buypatswife",
   },
 };
 

@@ -47,7 +47,7 @@ export default function Home() {
               </p>
 
               <p>
-                Support my memecoin, $BRITT, and you can chat with me, Brittany Mahomes, 
+                Support my memecoin, $PATSWIFE, and you can chat with me, Brittany Mahomes, 
                 the queen of stumbling into generational wealth! See you in the skybox ❤️
               </p>
             </div>
@@ -56,7 +56,7 @@ export default function Home() {
           {/* Social Links and Contract */}
           <div className="space-y-4">
             <a 
-              href="https://x.com/buybrittcoin?s=21&t=w6rFv7KZNoWdXuzqy9wYpA"
+              href="https://x.com/buypatswife?s=21&t=w6rFv7KZNoWdXuzqy9wYpA"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-black/30 px-6 py-4 rounded-xl flex items-center justify-center space-x-3 text-white border-2 border-[#E31837] hover:bg-[#E31837]/20 transition-all"
@@ -64,7 +64,7 @@ export default function Home() {
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
-              <span className="font-bold">Follow @buybrittcoin</span>
+              <span className="font-bold">Follow @buy$PATSWIFE</span>
             </a>
 
             <div className="bg-black/30 rounded-xl p-4 text-center border-2 border-[#E31837]">
