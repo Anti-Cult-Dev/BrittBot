@@ -20,14 +20,14 @@ model Chat {
 }
 
 model Message {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  content   String
-  role      String
-  chatId    String
-  chat      Chat     @relation(fields: [chatId], references: [id])
-  reactions Reaction[]
+  id          String     @id @default(uuid())
+  content     String
+  role        String
+  createdAt   DateTime   @default(now())
+  reactions   Reaction[]
   attachments Attachment[]
+  chatId      String
+  chat        Chat       @relation(fields: [chatId], references: [id])
 }
 
 model Reaction {
@@ -40,7 +40,7 @@ model Reaction {
 model Attachment {
   id        String   @id @default(uuid())
   filename  String
-  url      String
+  url       String
   messageId String
   message   Message  @relation(fields: [messageId], references: [id])
 }

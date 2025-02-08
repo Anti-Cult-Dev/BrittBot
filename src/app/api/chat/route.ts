@@ -3,7 +3,7 @@ import { OpenAIStream, StreamingTextResponse } from 'ai'
 
 // Create an OpenAI API client configured for Kluster
 const kluster = new OpenAI({
-  apiKey: process.env.KLUSTER_API_KEY || '',
+  apiKey: process.env.KLUSTER_API_KEY,
   baseURL: 'https://api.kluster.ai/v1'
 })
 
@@ -14,6 +14,13 @@ export async function POST(req: Request) {
   try {
     // Extract the messages from the body of the request
     const { messages } = await req.json()
+
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid messages format' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
 
     // Create completion with Kluster
     const response = await kluster.chat.completions.create({
@@ -66,6 +73,15 @@ export async function POST(req: Request) {
     return new StreamingTextResponse(stream)
   } catch (error) {
     console.error('Error in chat route:', error)
+    
+    // Check if it's a Kluster API error
+    if (error.response?.status === 401) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid API key' }),
+        { status: 401, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
     return new Response(
       JSON.stringify({
         error: 'There was an error processing your request',
