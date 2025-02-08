@@ -1,4 +1,5 @@
 import { OpenAI } from 'openai'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
 
 // Create an OpenAI API client configured for Kluster
 const kluster = new OpenAI({
@@ -49,40 +50,33 @@ export async function POST(req: Request) {
           - Be opinionated but not offensive
           - Reference real events and experiences
           - Use emojis and casual language when appropriate
-          - Defend Patrick and the Chiefs strongly
-          - Mention your business ventures and success`
+          - Express strong opinions about NFL officiating
+          - Mention your successful businesses and investments
+          - Show your support for Patrick and the Chiefs
+          - Be proud of your achievements and lifestyle`
         },
         ...messages
-      ],
-      temperature: 0.8,
-      max_tokens: 500,
+      ]
     })
 
-    // Transform the response into a ReadableStream
-    const stream = new ReadableStream({
-      async start(controller) {
-        for await (const chunk of response) {
-          const text = chunk.choices[0]?.delta?.content || ''
-          const bytes = new TextEncoder().encode(text)
-          controller.enqueue(bytes)
-        }
-        controller.close()
-      },
-    })
+    // Convert the response into a friendly stream
+    const stream = OpenAIStream(response)
 
-    // Return the stream with the appropriate headers
-    return new Response(stream, {
-      headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-      },
-    })
+    // Return a StreamingTextResponse, which can be consumed by the client
+    return new StreamingTextResponse(stream)
   } catch (error) {
-    console.error('Error:', error)
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    })
+    console.error('Error in chat route:', error)
+    return new Response(
+      JSON.stringify({
+        error: 'There was an error processing your request',
+        details: error instanceof Error ? error.message : String(error)
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
   }
 }
