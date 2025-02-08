@@ -96,7 +96,7 @@ function LiveStats() {
 }
 
 function VIPQuiz({ onComplete }: { onComplete: () => void }) {
-  const [currentQuestion, setCurrentQuestion] = useState(() => {
+  const [currentQuestion] = useState(() => {
     const randomIndex = Math.floor(Math.random() * quizQuestions.length)
     return quizQuestions[randomIndex]
   })

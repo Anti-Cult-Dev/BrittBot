@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CopyButton } from '@/components/copy-button'
-import ImageSlider from '@/components/image-slider'
+import { default as ImageSlider } from '@/components/image-slider'
 
 export default function Home() {
   const contractAddress = "4YZ2gGWs4dWPar3nsoNHFTx4f6bYn6RMivS5pnr3pump"

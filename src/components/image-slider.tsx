@@ -1,30 +1,32 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
-const images = [
+const defaultImages = [
   '/Landing.jpg',
   '/Landing2.jpg',
   '/Landing3.jpg',
   '/Lading4.jpg',
   '/Landing6.jpg'
-]
+];
+
+const SLIDE_INTERVAL = 5000; // 5 seconds
 
 export default function ImageSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 5000) // Change image every 5 seconds
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % defaultImages.length);
+    }, SLIDE_INTERVAL);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(timer);
+  }, [defaultImages.length]); // Add dependency on images length
 
   return (
     <div className="absolute inset-0 -z-10">
-      {images.map((src, index) => (
+      {defaultImages.map((src, index) => (
         <div
           key={src}
           className="absolute inset-0 transition-opacity duration-1000"
@@ -42,5 +44,5 @@ export default function ImageSlider() {
         </div>
       ))}
     </div>
-  )
+  );
 }

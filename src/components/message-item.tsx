@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Heart, ThumbsUp, ThumbsDown, Smile } from 'lucide-react'
+import classNames from 'classnames'
 
 interface MessageProps {
   content: string
@@ -84,74 +85,79 @@ export function MessageItem({ content, role, timestamp, reactions = [], attachme
 
   return (
     <div className={containerClasses}>
-      {isAssistant && (
-        <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0">
+      <div className={classNames('flex items-start gap-3 text-sm', role === 'assistant' ? 'flex-row' : 'flex-row-reverse')}>
+        {role === 'assistant' ? (
           <Image
             src="/chatPFP.jpg"
-            alt="Brittany Profile"
-            fill
-            className="object-cover"
+            alt="Brittany Mahomes"
+            width={40}
+            height={40}
+            className="rounded-full"
           />
-        </div>
-      )}
-      <div className="max-w-[80%]">
-        <div
-          className={`${bubbleClasses} px-4 py-2 relative group`}
-          onDoubleClick={() => setShowReactions(true)}
-        >
-          {renderContent(content)}
-          
-          {/* Reactions */}
-          {showReactions && (
-            <div className="absolute -top-10 left-0 bg-black/80 rounded-full px-2 py-1 flex space-x-1">
-              {EMOJI_OPTIONS.map((emoji) => (
-                <button
-                  key={emoji}
-                  onClick={() => {
-                    onReact && onReact(emoji)
-                    setShowReactions(false)
-                  }}
-                  className="hover:scale-125 transition-transform"
-                >
-                  {emoji}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Attachments */}
-          {attachments.length > 0 && (
-            <div className="mt-2 space-y-1">
-              {attachments.map(({ filename, url }) => (
-                <a
-                  key={url}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-sm text-blue-400 hover:text-blue-300"
-                >
-                  📎 {filename}
-                </a>
-              ))}
-            </div>
-          )}
-
-          {/* Timestamp */}
-          <div className="text-xs text-gray-400 mt-1">
-            {format(timestamp, 'h:mm a')}
-          </div>
-        </div>
-
-        {/* Display reactions */}
-        {reactions.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-1">
-            {reactions.map(({ id, emoji }) => (
-              <span key={id} className="text-sm">
-                {emoji}
-              </span>
-            ))}
+        ) : (
+          <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold">
+            U
           </div>
         )}
+        <div className="max-w-[80%]">
+          <div
+            className={`${bubbleClasses} px-4 py-2 relative group`}
+            onDoubleClick={() => setShowReactions(true)}
+          >
+            {renderContent(content)}
+            
+            {/* Reactions */}
+            {showReactions && (
+              <div className="absolute -top-10 left-0 bg-black/80 rounded-full px-2 py-1 flex space-x-1">
+                {EMOJI_OPTIONS.map((emoji) => (
+                  <button
+                    key={emoji}
+                    onClick={() => {
+                      onReact && onReact(emoji)
+                      setShowReactions(false)
+                    }}
+                    className="hover:scale-125 transition-transform"
+                  >
+                    {emoji}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Attachments */}
+            {attachments.length > 0 && (
+              <div className="mt-2 space-y-1">
+                {attachments.map(({ filename, url }) => (
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-blue-400 hover:text-blue-300"
+                  >
+                    📎 {filename}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {/* Timestamp */}
+            <div className="text-xs text-gray-400 mt-1">
+              {format(timestamp, 'h:mm a')}
+            </div>
+          </div>
+
+          {/* Display reactions */}
+          {reactions.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-1">
+              {reactions.map(({ id, emoji }) => (
+                <span key={id} className="text-sm">
+                  {emoji}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

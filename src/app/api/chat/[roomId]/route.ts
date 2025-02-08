@@ -1,6 +1,30 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import { NextResponse } from 'next/server';
 
+interface Message {
+  type: 'message' | 'system';
+  content: string;
+  username?: string;
+  timestamp: string;
+}
+
+interface JoinMessage {
+  type: 'join';
+  room: string;
+}
+
+interface LeaveMessage {
+  type: 'leave';
+}
+
+interface ChatMessage {
+  type: 'message';
+  content: string;
+  username: string;
+}
+
+type IncomingMessage = JoinMessage | LeaveMessage | ChatMessage;
+
 const rooms = new Map<string, Set<WebSocket>>();
 const wss = new WebSocketServer({ port: 3001 });
 
@@ -9,7 +33,7 @@ wss.on('connection', (ws: WebSocket) => {
 
   ws.on('message', (data: string) => {
     try {
-      const message = JSON.parse(data);
+      const message: IncomingMessage = JSON.parse(data);
       
       switch (message.type) {
         case 'join':
@@ -73,7 +97,7 @@ wss.on('connection', (ws: WebSocket) => {
   });
 });
 
-function broadcastToRoom(roomId: string, message: any) {
+function broadcastToRoom(roomId: string, message: Message) {
   const room = rooms.get(roomId);
   if (room) {
     const messageStr = JSON.stringify(message);
@@ -85,7 +109,7 @@ function broadcastToRoom(roomId: string, message: any) {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   // This route exists to satisfy Next.js but we're using raw WebSocket
   return new NextResponse(null, { status: 101 });
 }

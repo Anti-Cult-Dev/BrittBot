@@ -31,6 +31,7 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const [flagCount, setFlagCount] = useState(0)
+  const [throwFlag, setThrowFlag] = useState(false)
   const abortControllerRef = useRef<AbortController | null>(null)
 
   // Auto scroll to bottom
@@ -43,10 +44,19 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
   // Handle flag throws from parent
   useEffect(() => {
     if (showFlag) {
-      throwFlag()
+      setThrowFlag(true)
       onFlagChange?.(false)
     }
   }, [showFlag, onFlagChange])
+
+  useEffect(() => {
+    if (throwFlag) {
+      const timer = setTimeout(() => {
+        setThrowFlag(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [throwFlag]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -136,15 +146,15 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
     setMessages(prev => prev.slice(0, -2))
   }
 
-  const throwFlag = () => {
-    setFlagCount(prev => prev + 1)
-    const flagMessage: Message = {
-      id: Date.now().toString(),
-      role: 'assistant',
-      content: getFlagMessage(),
-      createdAt: new Date(),
-    }
-    setMessages(prev => [...prev, flagMessage])
+  const handleReaction = async (_index: number, reaction: string) => {
+    // Add reaction to message
+    setMessages(prev =>
+      prev.map(msg =>
+        msg.reactions
+          ? { ...msg, reactions: [...msg.reactions, { id: Date.now().toString(), emoji: reaction }] }
+          : { ...msg, reactions: [{ id: Date.now().toString(), emoji: reaction }] }
+      )
+    )
   }
 
   const getFlagMessage = () => {
@@ -176,18 +186,7 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
               timestamp={message.createdAt || new Date()}
               reactions={message.reactions}
               attachments={message.attachments}
-              onReact={(emoji) => {
-                setMessages(prev =>
-                  prev.map(msg =>
-                    msg.id === message.id
-                      ? {
-                          ...msg,
-                          reactions: [...(msg.reactions || []), { id: Date.now().toString(), emoji }],
-                        }
-                      : msg
-                  )
-                )
-              }}
+              onReact={(emoji) => handleReaction(index, emoji)}
             />
           ))}
           <div ref={messagesEndRef} />
@@ -228,7 +227,7 @@ export default function Chat({ showFlag, onFlagChange }: ChatProps) {
               )}
               <button
                 type="button"
-                onClick={throwFlag}
+                onClick={() => setThrowFlag(true)}
                 className="text-[#FFB81C] hover:text-white transition-colors flex items-center space-x-1"
               >
                 <Flag className="w-4 h-4" />
