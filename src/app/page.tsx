@@ -33,7 +33,7 @@ export default function Home() {
             </p>
             
             <div className="space-y-4 text-xl text-white">
-              <p>Its ya girl Brittany.</p>
+              <p>It’s ya girl Brittany Mahomes.</p>
 
               <p>
                 Honestly, if you really think about it, we're not so different you and I.
