@@ -21,6 +21,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Britt's World - Sports Commentary",
+        type: 'image/png',
       }
     ],
     locale: 'en_US',
@@ -31,7 +32,13 @@ export const metadata: Metadata = {
     title: "Britt's World",
     description: "Where every call is actually wrong and your opinion doesn't matter",
     creator: "@buypatswife",
-    images: ['https://brittworld.vercel.app/og.png'],
+    images: {
+      url: 'https://brittworld.vercel.app/og.png',
+      alt: "Britt's World - Sports Commentary",
+      type: 'image/png',
+      width: 1200,
+      height: 630,
+    },
     site: "@buypatswife",
   },
   robots: {
