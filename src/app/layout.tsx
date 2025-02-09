@@ -9,17 +9,37 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Britt's World",
   description: "Where every call is actually wrong and your opinion doesn't matter",
+  metadataBase: new URL('https://brittworld.vercel.app'),
   openGraph: {
     title: "Britt's World",
     description: "Where every call is actually wrong and your opinion doesn't matter",
     url: "https://brittworld.vercel.app",
     siteName: "Britt's World",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Britt's World - Sports Commentary",
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: "summary_large_image",
     title: "Britt's World",
     description: "Where every call is actually wrong and your opinion doesn't matter",
     creator: "@buypatswife",
+    images: ['/og-image.png'],
+    site: "@buypatswife",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  verification: {
+    google: "google-site-verification-code", // Add your verification code if you have one
   },
 };
 
