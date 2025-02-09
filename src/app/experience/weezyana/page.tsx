@@ -67,6 +67,24 @@ export default function WeezyanaPage() {
           </p>
         </div>
 
+        {/* Featured Video Section */}
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold text-center">Featured Performance</h2>
+          <div className="max-w-4xl mx-auto aspect-video">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/zq4djDly3kM?si=ERIFgPQtoz1EDPHp" 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+
         {/* Achievements Section */}
         <div className="space-y-6">
           <h2 className="text-3xl font-bold">Legacy of Weezy F Baby</h2>
