@@ -1,5 +1,5 @@
 import { SuperBowlCountdown } from '@/components/super-bowl-countdown'
-import { MessageCircle, Crown, Trophy, ChartBar, Book } from 'lucide-react'
+import { MessageCircle, Crown, Trophy, ChartBar, Book, Music } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
@@ -11,6 +11,13 @@ export default function ExperiencePage() {
       icon: MessageCircle,
       href: "/experience/chat",
       color: "from-pink-500 to-rose-500"
+    },
+    {
+      title: "Real Weezyana Halftime Show",
+      description: "A tribute to Lil Wayne - the true voice of New Orleans who deserved to headline the Super Bowl LVIII halftime show.",
+      icon: Music,
+      href: "/experience/weezyana",
+      color: "from-red-500 to-yellow-500"
     },
     {
       title: "VIP Skybox Experience",
