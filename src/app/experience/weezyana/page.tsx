@@ -50,13 +50,35 @@ export default function WeezyanaPage() {
         backgroundImage: "url('/New-Orleans-street-art-Lil-Wayne-mural-1024x768.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed'
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/80 z-0" />
+      <div className="absolute inset-0 bg-black/50" />
       
-      {/* Content */}
+      {/* Back button */}
+      <div className="relative z-10 p-4">
+        <a 
+          href="/experience" 
+          className="inline-flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg backdrop-blur-sm transition-all"
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-5 w-5 mr-2" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path 
+              fillRule="evenodd" 
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" 
+              clipRule="evenodd" 
+            />
+          </svg>
+          Back to Experiences
+        </a>
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 space-y-12">
         {/* Hero Section */}
         <div className="text-center space-y-4">
