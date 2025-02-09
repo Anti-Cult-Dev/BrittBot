@@ -1,7 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/experience/page": "app/experience/page.js",
-  "/experience/trading-card/page": "app/experience/trading-card/page.js",
-  "/api/generate-card/route": "app/api/generate-card/route.js"
-}
