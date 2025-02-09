@@ -44,8 +44,20 @@ export default function WeezyanaPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
+    <main 
+      className="min-h-screen bg-black text-white relative"
+      style={{
+        backgroundImage: "url('/New-Orleans-street-art-Lil-Wayne-mural-1024x768.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/80 z-0" />
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 space-y-12">
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
@@ -61,7 +73,7 @@ export default function WeezyanaPage() {
         </div>
 
         {/* Message Section */}
-        <div className="bg-gradient-to-r from-red-900/20 to-yellow-900/20 rounded-lg p-6 border border-red-500/20">
+        <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-red-500/20">
           <p className="text-lg md:text-xl italic text-gray-300">
             "It broke me. I'm just trying to put me back together." - Lil Wayne on being passed over for the Super Bowl LVIII halftime show in his hometown of New Orleans
           </p>
@@ -70,7 +82,7 @@ export default function WeezyanaPage() {
         {/* Featured Video Section */}
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-center">Featured Performance</h2>
-          <div className="max-w-4xl mx-auto aspect-video">
+          <div className="max-w-4xl mx-auto aspect-video bg-black/40 p-2 rounded-lg backdrop-blur-sm">
             <iframe 
               width="100%" 
               height="100%" 
@@ -92,7 +104,7 @@ export default function WeezyanaPage() {
             {achievements.map((achievement, index) => (
               <div 
                 key={index}
-                className="bg-gradient-to-r from-red-900/10 to-yellow-900/10 p-4 rounded-lg border border-red-500/10"
+                className="bg-black/40 backdrop-blur-sm p-4 rounded-lg border border-red-500/10"
               >
                 <p className="text-gray-300">{achievement}</p>
               </div>
@@ -107,7 +119,7 @@ export default function WeezyanaPage() {
             {songs.map((song, index) => (
               <div 
                 key={index}
-                className="bg-gradient-to-r from-red-900/10 to-yellow-900/10 rounded-lg overflow-hidden"
+                className="bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden"
               >
                 <div className="aspect-video">
                   <iframe
