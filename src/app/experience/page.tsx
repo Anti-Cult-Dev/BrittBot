@@ -1,10 +1,24 @@
+"use client"
+
 import { SuperBowlCountdown } from '@/components/super-bowl-countdown'
-import { MessageCircle, Crown, Trophy, ChartBar, Book, Music } from 'lucide-react'
+import { MessageCircle, Crown, Trophy, ChartBar, Book, Music, ImageIcon } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { ReactNode } from 'react'
+import { LucideIcon } from 'lucide-react'
+
+interface Feature {
+  title: string;
+  description: string;
+  icon: LucideIcon | null;
+  href: string | null;
+  color: string | null;
+  component?: ReactNode;
+  locked?: boolean;
+}
 
 export default function ExperiencePage() {
-  const features = [
+  const features: Feature[] = [
     {
       title: "Britt's Corner",
       description: "Chat with Brittany's AI powered by Kluster's technology. Get her hot takes on everything from football to fashion.",
@@ -47,8 +61,15 @@ export default function ExperiencePage() {
       icon: Book,
       href: "/experience/playbook",
       color: "from-blue-500 to-cyan-500"
+    },
+    {
+      title: "Generate Trading Card",
+      description: "Create a unique digital trading card using OpenAI's image generation technology.",
+      icon: ImageIcon,
+      href: "/experience/trading-card",
+      color: "from-violet-500 to-fuchsia-500"
     }
-  ]
+  ];
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -61,7 +82,7 @@ export default function ExperiencePage() {
           {features.map((feature) => (
             <Link
               key={feature.title}
-              href={feature.href}
+              href={feature.href || '#'}
               className={cn(
                 "group relative overflow-hidden rounded-xl p-1 transition-all hover:scale-105",
                 `bg-gradient-to-r ${feature.color}`
@@ -69,7 +90,7 @@ export default function ExperiencePage() {
             >
               <div className="relative h-full bg-black rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <feature.icon className="w-8 h-8" />
+                  {feature.icon && <feature.icon className="w-8 h-8" />}
                   {feature.locked && (
                     <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/10">
                       🔒 Locked
@@ -84,5 +105,5 @@ export default function ExperiencePage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

@@ -3,6 +3,13 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+        pathname: '/private/**',
+      }
+    ],
   },
   typescript: {
     // !! WARN !!

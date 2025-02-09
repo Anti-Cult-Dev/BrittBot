@@ -1,0 +1,40 @@
+{
+  "sorted_middleware": [
+    "/api/chat/route"
+  ],
+  "middleware": {},
+  "instrumentation": null,
+  "functions": {
+    "/api/chat/route": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/app/api/chat/route_client-reference-manifest.js",
+        "server/edge/chunks/_dbb6c4._.js",
+        "server/edge/chunks/node_modules_openai_6230ce._.js",
+        "server/edge/chunks/[root of the server]__1cc3a1._.js",
+        "server/edge/chunks/edge-wrapper_5356af.js"
+      ],
+      "name": "/api/chat",
+      "page": "/api/chat/route",
+      "matchers": [
+        {
+          "regexp": "^/api/chat(?:/)?$",
+          "originalSource": "/api/chat"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "5m8mhHHMRW1X0TG5ZdORd96eXSXlwwXWEu/KOXEbN20=",
+        "__NEXT_PREVIEW_MODE_ID": "82a436a4a86214d4cf1e496a1c007883",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6dc9839be5f2ac887dd5b81bc7098b7bd3f19f9e360bb08f50d54a11f2437a2b",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "f79e887db0e60e44f1cc18435f2ca8074fc9275448abdacf198beefc65d580f3"
+      }
+    }
+  }
+}
