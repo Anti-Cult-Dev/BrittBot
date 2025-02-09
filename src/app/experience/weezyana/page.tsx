@@ -27,10 +27,10 @@ export default function WeezyanaPage() {
       description: "The hit single that dominated charts worldwide"
     },
     {
-      title: "Mrs. Officer",
-      year: "2008",
-      videoId: "UKjj4hk0pV4",
-      description: "Featuring Bobby Valentino - a fan favorite from Tha Carter III"
+      title: "Right Above It",
+      year: "2010",
+      videoId: "CHZtMNbrmWE",
+      description: "Featuring Drake - an anthem that showcases Wayne's unstoppable spirit"
     }
   ]
 
